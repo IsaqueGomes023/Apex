@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Jorge Kogake Júnior | Apex Supply</title>
+<meta name="description" content="Cartão de visita digital — Jorge Kogake Júnior, Comercial na Apex Supply">
+<meta name="theme-color" content="#0B1F3A">
+<!-- Open Graph (para compartilhamento via link) -->
+<meta property="og:title" content="Jorge Kogake Júnior | Apex Supply">
+<meta property="og:description" content="Tecnologia e Soluções para a Indústria Onshore e Offshore">
+<meta property="og:type" content="profile">
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com">
+  function copyIgMsg(e) {
+    e.preventDefault();
+    const msg = "Oi, Jorge! Vi seu cartão de visita digital e me interessei pelas soluções da Apex Supply para a indústria. Podemos conversar? 😊";
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(msg).then(function() {
+        showIgToast();
+        setTimeout(() => window.open('https://www.instagram.com/apexsupplybr/', '_blank'), 600);
+      });
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = msg;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showIgToast();
+      setTimeout(() => window.open('https://www.instagram.com/apexsupplybr/', '_blank'), 600);
+    }
+  }
+  function showIgToast() {
+    const t = document.createElement('div');
+    t.textContent = '✅ Mensagem copiada! Cole no Direct do Instagram.';
+    t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#3a1a4a;color:#fff;padding:10px 20px;border-radius:20px;font-size:13px;z-index:999;box-shadow:0 4px 12px rgba(0,0,0,.4)';
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 3500);
+  }
+
+</script>
+
+<style>
+  /* ============================================================
+     APEX SUPPLY — vCard Digital Interativo
+     Titular: Jorge Kogake Júnior | Comercial
+     Versão:  1.0 | Junho 2025
+     Uso:     Deploy direto como index.html ou link compartilhado
+  ============================================================ */
+
+  /* --- Variáveis de marca ----------------------------------- */
+  :root {
+    --navy:       #0B1F3A;
+    --navy-deep:  #071428;
+    --gold:       #F5A000;
+    --gold-dark:  #D07800;
+    --gold-light: #FFB833;
+    --green-wa:   #25D366;
+  }
+
+  * { box-sizing: border-box; }
+
+  /* --- Background global ------------------------------------ */
+  body {
+    margin: 0;
+    padding: 20px 16px 48px;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background:
+      radial-gradient(ellipse 80% 55% at 15% 90%, rgba(245,160,0,0.07) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 40% at 88% 12%, rgba(30,85,210,0.12) 0%, transparent 50%),
+      linear-gradient(145deg, #071428 0%, #0B1F3A 55%, #0D2550 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Helvetica, sans-serif;
+  }
+
+  /* --- Card principal --------------------------------------- */
+  .card {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(11,31,58,0.88);
+    border: 1px solid rgba(245,160,0,0.16);
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    box-shadow:
+      0 28px 65px rgba(0,0,0,0.65),
+      0 0 0 1px rgba(245,160,0,0.07),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
+  /* Linha de topo dourada */
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 18%; right: 18%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    border-radius: 1px;
+    z-index: 1;
+  }
+
+  /* --- Seção hero ------------------------------------------ */
+  .hero {
+    padding: 36px 28px 22px;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(245,160,0,0.055) 0%, transparent 100%);
+  }
+
+  /* Logo */
+  .logo-wrap {
+    width: 92px;
+    height: 92px;
+    margin: 0 auto 18px;
+    filter: drop-shadow(0 4px 22px rgba(245,160,0,0.38));
+    animation: slideDown 0.55s cubic-bezier(.22,.68,0,1.2) both;
+  }
+
+  /* Nome */
+  .name {
+    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.025em;
+    margin: 0 0 10px;
+    animation: slideUp 0.5s 0.1s ease both;
+  }
+
+  /* Badge de cargo */
+  .badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #FFFFFF;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 5px 18px;
+    border-radius: 100px;
+    margin-bottom: 8px;
+    animation: slideUp 0.5s 0.18s ease both;
+  }
+
+  /* Empresa */
+  .company {
+    color: rgba(255,255,255,0.38);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin: 0;
+    animation: slideUp 0.5s 0.24s ease both;
+  }
+
+  /* Divider dourado */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(245,160,0,0.38), transparent);
+    margin: 18px 28px;
+    animation: fadeIn 0.6s 0.3s ease both;
+  }
+
+  /* --- Tagline + especialidades ---------------------------- */
+  .tagline {
+    padding: 0 28px 14px;
+    text-align: center;
+    animation: slideUp 0.5s 0.33s ease both;
+  }
+
+  .tagline p {
+    color: rgba(255,255,255,0.46);
+    font-size: 12px;
+    line-height: 1.65;
+    margin: 0 0 12px;
+  }
+
+  .tagline strong { color: var(--gold); font-weight: 600; }
+
+  /* Pills de especialidade */
+  .pills {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .pill {
+    background: rgba(245,160,0,0.09);
+    border: 1px solid rgba(245,160,0,0.22);
+    color: rgba(245,160,0,0.88);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    padding: 4px 13px;
+    border-radius: 100px;
+    text-transform: uppercase;
+  }
+
+  /* --- Botões de ação -------------------------------------- */
+  .actions {
+    padding: 14px 22px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Base de botão */
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    width: 100%;
+    padding: 15px 18px;
+    border-radius: 16px;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.012em;
+    font-family: inherit;
+    color: rgba(255,255,255,0.84);
+    transition:
+      transform  0.22s cubic-bezier(.4,0,.2,1),
+      box-shadow 0.22s cubic-bezier(.4,0,.2,1),
+      filter     0.22s ease;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  .btn:active  { transform: scale(0.965); }
+  .btn:hover   { transform: translateY(-2px); }
+
+  /* WhatsApp — CTA primário */
+  .btn-wa {
+    background: linear-gradient(135deg, var(--green-wa), #128C5B);
+    color: white;
+    box-shadow: 0 4px 22px rgba(37,211,102,0.38);
+    animation: slideUp 0.5s 0.38s ease both, pulse-wa 3s 1.4s ease-in-out infinite;
+  }
+  .btn-wa:hover { box-shadow: 0 8px 30px rgba(37,211,102,0.52); filter: brightness(1.06); }
+
+  /* Vidro escuro para os demais */
+  .btn-glass {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.09);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+  .btn-glass:hover {
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(245,160,0,0.28);
+    box-shadow: 0 6px 22px rgba(0,0,0,0.22);
+  }
+
+  /* Linha social (LinkedIn + Instagram) */
+  .social-row { display: flex; gap: 10px; }
+  .social-row .btn { flex: 1; padding: 13px 10px; font-size: 13px; }
+
+  /* Salvar contato — CTA dourado */
+  .btn-save {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #071428;
+    font-weight: 800;
+    box-shadow: 0 4px 22px rgba(245,160,0,0.38);
+    animation: slideUp 0.5s 0.58s ease both;
+    position: relative; overflow: hidden;
+  }
+  .btn-save::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
+    pointer-events: none;
+  }
+  .btn-save:hover { box-shadow: 0 8px 32px rgba(245,160,0,0.5); filter: brightness(1.06); }
+  .btn-save.saved {
+    background: linear-gradient(135deg, var(--green-wa), #1DA851);
+    color: white;
+    box-shadow: 0 4px 22px rgba(37,211,102,0.38);
+  }
+
+  /* Delays para animação sequencial */
+  .b-em   { animation: slideUp 0.5s 0.43s ease both; }
+  .b-site { animation: slideUp 0.5s 0.48s ease both; }
+  .b-soc  { animation: slideUp 0.5s 0.53s ease both; }
+
+  /* --- Footer ---------------------------------------------- */
+  .footer {
+    padding: 0 22px 20px;
+    text-align: center;
+    animation: fadeIn 0.6s 0.65s ease both;
+  }
+  .footer-div {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.07), transparent);
+    margin-bottom: 12px;
+  }
+  .footer p {
+    color: rgba(255,255,255,0.2);
+    font-size: 10.5px;
+    margin: 0;
+    letter-spacing: 0.05em;
+  }
+
+  /* --- Keyframes ------------------------------------------- */
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes pulse-wa {
+    0%,100% { box-shadow: 0 4px 22px rgba(37,211,102,0.38); }
+    50%      { box-shadow: 0 4px 30px rgba(37,211,102,0.65), 0 0 0 7px rgba(37,211,102,0.09); }
+  }
+</style>
+</head>
+
+<body>
+
+  <!--
+    ═══════════════════════════════════════════════════════════
+    APEX SUPPLY · vCard Digital
+    Jorge Kogake Júnior | Comercial
+    ═══════════════════════════════════════════════════════════
+  -->
+  <main class="card" role="main" aria-label="Cartão de Visita Digital — Jorge Kogake Júnior">
+
+    <!-- ── HERO: Logo · Nome · Cargo ─────────────────────── -->
+    <section class="hero">
+
+      <!--
+        Logo SVG — Apex Supply
+        Construção: círculo com borda degradê azul→dourado,
+        ícone "A" geométrico branco + acento dourado na base
+      -->
+      <div class="logo-wrap" aria-hidden="true">
+        <img src="https://raw.githubusercontent.com/IsaqueGomes023/Apex/main/logo_apex.png" alt="Apex Supply" style="width:100%;height:100%;object-fit:contain;">
+      </div>
+
+      <h1 class="name">Jorge Kogake Júnior</h1>
+      <span class="badge">Comercial</span>
+      <p class="company">Apex Supply</p>
+    </section>
+
+    <div class="divider" role="separator"></div>
+
+    <!-- ── TAGLINE + ESPECIALIDADES ──────────────────────── -->
+    <section class="tagline" aria-label="Sobre a Apex Supply">
+      <p>
+        Tecnologia e soluções para a<br>
+        <strong>Indústria Onshore</strong> e <strong>Offshore.</strong>
+      </p>
+      <div class="pills" aria-label="Áreas de atuação">
+        <span class="pill">Automação Industrial</span>
+        <span class="pill">Bombas Elétricas</span>
+      </div>
+    </section>
+
+    <!-- ── BOTÕES DE AÇÃO ─────────────────────────────────── -->
+    <nav class="actions" aria-label="Contatos e ações">
+
+      <!-- 1. WhatsApp — CTA principal -->
+      <a href="https://wa.me/5521966484665?text=Ol%C3%A1%2C%20Jorge%21%20Acabei%20de%20acessar%20seu%20cart%C3%A3o%20de%20visita%20digital.%20Gostaria%20de%20saber%20mais%20sobre%20as%20solu%C3%A7%C3%B5es%20da%20Apex%20Supply.%20Podemos%20conversar%3F"
+         class="btn btn-wa"
+         aria-label="Enviar mensagem no WhatsApp para +55 21 96648-4665">
+        <!-- Ícone WhatsApp SVG inline -->
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        WhatsApp
+      </a>
+
+      <!-- 2. E-mail -->
+      <a href="mailto:jorge.kogake@apexsupply.com.br?subject=Interesse%20nas%20solu%C3%A7%C3%B5es%20da%20Apex%20Supply&body=Prezado%20Jorge%2C%0A%0AAcabei%20de%20acessar%20seu%20cart%C3%A3o%20de%20visita%20digital%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20solu%C3%A7%C3%B5es%20da%20Apex%20Supply.%0A%0APoderia%20me%20apresentar%20os%20produtos%20e%20servi%C3%A7os%20dispon%C3%ADveis%3F%0A%0AAgrade%C3%A7o%20a%20aten%C3%A7%C3%A3o%20e%20fico%20no%20aguardo.%0A%0AAtenciosamente"
+         class="btn btn-glass b-em"
+         aria-label="Enviar e-mail para jorge.kogake@apexsupply.com.br">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="#F5A000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
+        Email
+      </a>
+
+      <!-- 3. Website -->
+      <a href="https://apexsupply.com.br" target="_blank" rel="noopener noreferrer"
+         class="btn btn-glass b-site"
+         aria-label="Acessar site apexsupply.com.br">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="#F5A000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+          <path d="M2 12h20"/>
+        </svg>
+        Site
+      </a>
+
+      <!-- 4. LinkedIn + Instagram lado a lado -->
+      <div class="social-row b-soc">
+
+        <a href="https://linkedin.com/company/apexsupply" target="_blank" rel="noopener noreferrer"
+           class="btn btn-glass"
+           aria-label="LinkedIn da Apex Supply">
+          <!-- Ícone LinkedIn -->
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="0" y="0" width="24" height="24" rx="4" fill="#0A66C2"/>
+            <path d="M8.5 7C8.5 7.83 7.83 8.5 7 8.5C6.17 8.5 5.5 7.83 5.5 7S6.17 5.5 7 5.5 8.5 6.17 8.5 7ZM5.5 9.5H8.5V18.5H5.5V9.5ZM10 9.5H13V10.8C13.5 10 14.5 9.2 16 9.2 18.5 9.2 19.5 10.7 19.5 13.2V18.5H16.5V13.8C16.5 12.5 16 11.5 14.8 11.5 13.6 11.5 13 12.5 13 13.8V18.5H10V9.5Z" fill="white"/>
+          </svg>
+          LinkedIn
+        </a>
+
+        <a href="https://www.instagram.com/apexsupplybr/" target="_blank" rel="noopener noreferrer"
+           class="btn btn-glass"
+           aria-label="Instagram @apexsupplybr"
+           onclick="copyIgMsg(event)">
+          <!-- Ícone Instagram -->
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+            <defs>
+              <linearGradient id="igG" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%"   stop-color="#f09433"/>
+                <stop offset="33%"  stop-color="#e6683c"/>
+                <stop offset="55%"  stop-color="#dc2743"/>
+                <stop offset="77%"  stop-color="#cc2366"/>
+                <stop offset="100%" stop-color="#bc1888"/>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="24" height="24" rx="6" fill="url(#igG)"/>
+            <circle cx="12" cy="12" r="4.3" fill="none" stroke="white" stroke-width="1.6"/>
+            <circle cx="17.2" cy="6.8" r="1.3" fill="white"/>
+          </svg>
+          Instagram
+        </a>
+
+      </div>
+
+      <!-- 5. Salvar Contato (.vcf) -->
+      <button id="saveBtn"
+              class="btn btn-save"
+              onclick="salvarContato(event)"
+              aria-label="Baixar contato para salvar na agenda">
+        <!-- Ícone de salvar/disquete -->
+        <svg id="saveIcon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+          <polyline points="17 21 17 13 7 13 7 21"/>
+          <polyline points="7 3 7 8 15 8"/>
+        </svg>
+        <span id="saveLabel">Salvar Contato</span>
+      </button>
+
+    </nav>
+
+    <!-- ── FOOTER ─────────────────────────────────────────── -->
+    <footer class="footer">
+      <div class="footer-div" role="separator"></div>
+      <p>© 2026 Apex Supply · Tecnologia e Soluções Industriais</p>
+    </footer>
+
+  </main><!-- /card -->
+
+  <script>
+    /* ═══════════════════════════════════════════════════════
+       SALVAR CONTATO — Geração de vCard 3.0 (.vcf)
+       Compatível com: iOS Contatos, Android, Outlook
+    ═══════════════════════════════════════════════════════ */
+    function salvarContato(evt) {
+      evt.preventDefault();
+
+      /* Dados do contato */
+      const vcf = [
+        'BEGIN:VCARD',
+        'VERSION:3.0',
+        'FN:Jorge Kogake Júnior',
+        'N:Kogake Júnior;Jorge;;;',
+        'ORG:Apex Supply',
+        'TITLE:Comercial',
+        'TEL;TYPE=CELL,PREF:+5521966484665',
+        'TEL;TYPE=WORK:+5521966484665',
+        'EMAIL;TYPE=WORK,PREF:jorge.kogake@apexsupply.com.br',
+        'URL:https://apexsupply.com.br',
+        'X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/apexsupplybr/',
+        'X-SOCIALPROFILE;TYPE=linkedin:https://linkedin.com/company/apexsupply',
+        'NOTE:Tecnologia e Soluções para a Indústria Onshore e Offshore.' +
+          ' Especialidades: Automação Industrial · Bombas Elétricas e Pneumáticas.',
+        'END:VCARD'
+      ].join('\r\n');
+
+      /* Gerar e acionar download */
+      const blob = new Blob([vcf], { type: 'text/vcard;charset=utf-8' });
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href     = url;
+      a.download = 'Jorge_Kogake_ApexSupply.vcf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      /* Feedback visual — estado "Salvo" */
+      const btn   = document.getElementById('saveBtn');
+      const icon  = document.getElementById('saveIcon');
+      const label = document.getElementById('saveLabel');
+
+      btn.classList.add('saved');
+      icon.innerHTML =
+        '<polyline points="20 6 9 17 4 12"' +
+        ' stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>';
+      label.textContent = 'Contato Salvo!';
+
+      /* Restaurar após 3 s */
+      setTimeout(() => {
+        btn.classList.remove('saved');
+        icon.innerHTML =
+          '<path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"' +
+          ' stroke="currentColor" stroke-width="2.5" fill="none"/>' +
+          '<polyline points="17 21 17 13 7 13 7 21" stroke="currentColor" stroke-width="2.5" fill="none"/>' +
+          '<polyline points="7 3 7 8 15 8" stroke="currentColor" stroke-width="2.5" fill="none"/>';
+        label.textContent = 'Salvar Contato';
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
