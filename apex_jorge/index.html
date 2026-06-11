@@ -266,11 +266,12 @@
   /* Salvar contato — CTA dourado */
   .btn-save {
     background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-    color: #071428;
+    color: #f0ece4;
     font-weight: 800;
     box-shadow: 0 4px 22px rgba(245,160,0,0.38);
     animation: slideUp 0.5s 0.58s ease both;
     position: relative; overflow: hidden;
+    transition: color 0.2s ease;
   }
   .btn-save::after {
     content: '';
@@ -278,7 +279,7 @@
     background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
     pointer-events: none;
   }
-  .btn-save:hover { box-shadow: 0 8px 32px rgba(245,160,0,0.5); filter: brightness(1.06); }
+  .btn-save:hover { box-shadow: 0 8px 32px rgba(245,160,0,0.5); filter: brightness(1.06); color: #071428; }
   .btn-save.saved {
     background: linear-gradient(135deg, var(--green-wa), #1DA851);
     color: white;
